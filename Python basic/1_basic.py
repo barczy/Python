@@ -45,3 +45,38 @@ age_str=str(age) # int(), float()
 print(10/3) # normál osztás
 print(10//3) # egészre kerekít
 print(10%3)  # maradék
+## comparison operator
+## ==  !=  > < <= =>
+## Logical operators
+## and not or
+
+############################ 
+## Conditional statements
+############################ 
+## if
+age=20
+if age>=20:
+    print(".")
+elif age<10:
+    print("..")
+else:
+    print("...")
+
+############################ 
+## Loops
+############################
+## végigmegy egy collection-ön! collection bármi is lehet. 
+for i in range(2,7):  # range(7) , range(0,10,2)-step paraméterrel
+    print(i)
+    if i==5:
+        break
+
+for c in "Zsolt":
+    print(c)
+
+count=0
+while(count<5): # Amíg igaz!
+    print(count)
+    if count==3:
+        break
+    count=count+1

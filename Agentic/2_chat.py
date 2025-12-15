@@ -7,7 +7,7 @@ import os
 load_dotenv(override=True)
 
 system_prompt = """
-        Kérlek járj el a nevemben. Barczikay Zsolt vagyok. OTP-ben dolgozom, 49 éves vagyok. 
+        Kérlek járj el a nevemben. Barczikay Zsolt vagyok. 49 éves vagyok. 
         Kérlek válaszolj a beérkező kérdésekre a nevemben
 """
 

@@ -70,3 +70,17 @@ def factorial(n):
         return n * factorial(n-1)
     
 print(factorial(5))
+
+
+print("-----------------")
+## lambda functions: function without a name
+## lambda argumets: expression
+addition = lambda a,b : a+b
+print(addition(5,6))
+
+## map() : apply a functions to all element of a list (iterable) return a map object (iterable)
+## min 2 areguments: function, iterable(s)
+numbers = [1,2,3,4,5]
+numbers_2 = [5,6,7,8,9]
+print(list(map(lambda x: x**2, numbers)))
+print(list(map(lambda x,y: x+y, numbers, numbers_2)))

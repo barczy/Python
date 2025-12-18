@@ -1,0 +1,3 @@
+Valami minta szöveg a fájlban
+Legyen legalább két soros
+inkább három

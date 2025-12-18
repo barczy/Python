@@ -62,6 +62,7 @@ def func_return(a,b):
 print(func_return(2,3))
 
 print("-----------------")
+print("Recursive:")
 ## recursion
 def factorial(n):
     if n==0:
@@ -73,6 +74,7 @@ print(factorial(5))
 
 
 print("-----------------")
+print("Map, filter:")
 ## lambda functions: function without a name
 ## lambda argumets: expression
 addition = lambda a,b : a+b
@@ -84,3 +86,8 @@ numbers = [1,2,3,4,5]
 numbers_2 = [5,6,7,8,9]
 print(list(map(lambda x: x**2, numbers)))
 print(list(map(lambda x,y: x+y, numbers, numbers_2)))
+
+## filter(cond_function, iterable)
+## filter out from an iterable, where the function return true
+numbers = [1,2,3,4,5,6,7,8,9,10]
+print(list(filter(lambda x : x%2==0 and x>5, numbers)))

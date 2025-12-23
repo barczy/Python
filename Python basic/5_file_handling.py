@@ -30,3 +30,15 @@ with open('example_2.txt','w+') as file:
     file.write("second line\n")
     file.seek(0) # file elejére viszi a curzort
     print(file.read())
+
+############################
+##
+## Use directory
+##
+## create a new directory
+## os.mkdir("new directory")
+## os.exists("filename"), os.path.isFile(), os.path.isDir
+import os
+print(f"Current path: {os.getcwd()}")
+items = os.listdir('.')
+print(items)

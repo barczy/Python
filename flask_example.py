@@ -38,7 +38,7 @@ def submit():
     return render_template('index.html') #Jinja2 template engine
     #return redirect(url_for()) ## vagy átirányítás
 
-# Felhasználói kérdés feldolgozása
+# Felhasználói kérdés feldolgozása, példa API interfészre. Json formát vár, Json formát ad
 @app.route('/query', methods=['post'])
 def handle_query():
     data = request.json

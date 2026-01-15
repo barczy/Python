@@ -10,4 +10,7 @@ mlflow.set_experiment('Check localhost connection')
 with mlflow.start_run():
     mlflow.log_metric('test',1)
     mlflow.log_metric('John',2)
-     
+
+with mlflow.start_run():
+    mlflow.log_metric('test1',1)
+    mlflow.log_metric('Jill',2)

@@ -1,0 +1,66 @@
+• ps aux | grep -i mlflow
+• mlflow ui --host 127.0.0.1 --port 5000
+
+Jupiter Notebook
+
+Sequences
+	Lists mint tömb
+	Tmp = ['John','akarmi,...] # 0-val index tmp[-1]
+	Lehet, minuszos index, akkor a végéről indul 
+	del Participants[2] #törli a második elemet
+	Participants.append("Dwayne") # hozzáadja a végéhez vagy .extend("..","","...")
+	len(Participants)
+	
+	Participants[1:3].   #slicing, kivesz 2 elemet közepéről
+	Participants[:2]   #slicing, kivesz 2 elemet előről
+	Participants[4:]   #slicing, kivesz 2 elemet hátulról
+	Participants.index("Maria")  # visszaadja az indexet
+	Bigger_List =[ Participants, Newcomers].   # list of list
+	Number.sort(reverse=True)   # rendez
+	
+	Tuples (sorok)
+	X = (10,20,30) # nem módosíthatóak
+	X = 10, 20, 30
+	(age, year ) = "30 ,3".split(',')
+	return a,b     # függvényben, így tudunk több értéket visszaadni
+	
+	Distionary (key, value)
+	Dict = {}
+	Dict = { 'k1':'cat' , 'k2': 'dog', ...}
+	Dict['k1'] vagy Dict.get('k1').  # ha nincs, akkor "None"
+	Dict['k5']='fly' # újabb érték felvétele vagy csere
+	Keverhetők, egy elem lehet akár egy lista is.
+Iterations
+	For n in even:     # ahol even egy Lists
+		print(n, end = ' ').   # egy sorba fogja kiírni, azaz enter helyett szóköz a végére
+	while (amig igaz a feltétel) :
+	range(start, stop, step): csinál egy listát [1,2,3,4], típusa így csak range
+	list(range(1,20,2)).  # [1,3,5,..19]
+	for n in range(10):   # 10-es for ciklus
+	Comprehension
+		new_n = [ n *2 for n in numbers]
+				[ i +j for i in range (2) for j in range(5)]   ( két ciklust is)
+				[ i +j for i in range (2) for j in range(5) if j%2 != 0 ]   ( feltételt is)
+				
+MISC
+	OOP
+	Modules (import....) , Packages (library), python standard library (built-in features)
+	Import
+		1
+			import math
+			math.sqrt(3)  #objektum is kell
+		2
+			from math import sqrt
+			sqrt(3)   # objektum elhagyható
+		3
+			from math import sqrt as s
+			s(3)  # a név is rövidíthető
+		4
+			import math as m
+			m.sqrt(3)
+		5
+			from math import *
+			sqrt(3)    # több importnál névütközést okozhat, kerülendő...
+		help(math) # help kérhető...
+	Documentation
+		https://docs.python.org/3/

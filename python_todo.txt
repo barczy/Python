@@ -1,0 +1,76 @@
+uv 
+
+Hogy biztosan jó helyre telepítse:
+
+	python3 -m pip install gradio
+	python3 -m pip show gradio.  # van telepítve gradio modul?
+	
+Visual Code
+	Press Ctrl + Shift + P (Windows/Linux) or Cmd + Shift + P (macOS).
+	Python: Select Interpreter
+
+
+
+
+Anaconda - conda
+
+Streamlit:
+	https://www.geeksforgeeks.org/python/a-beginners-guide-to-streamlit/
+	Conténerben: http://0.0.0.0:8501/
+	Streamlit chat minta: https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/build-conversational-apps
+
+Jupiter:
+	Indítás: jupyter notebook
+	http://localhost:8888/tree
+	
+https://www.geeksforgeeks.org/python/python-exercises-practice-questions-and-solutions/
+
+pip list 
+	telepített csomagok!
+
+pip freeze > requirements.txt
+	Kiadja az összes telepített csomgot!!!
+
+
+The pyproject.toml file is a modern configuration file for Python projects. It defines how your project is built, what dependencies it needs, and how tools like linters or formatters should behave.
+Telepítés, abban a könyvtárban ahol a file van:
+
+	poetry install 
+
+------
+Pylance is a Visual Studio Code (VS Code) extension that provides fast and feature-rich Python language support. It's developed by Microsoft and is built on top of the Language Server Protocol using a performant engine called Pyright.
+
+------
+LangGraphDemó konténerizálás
+	
+	cd /Users/zsoltbarczikay/dev/langgraphdemo-completed
+	podman build -t langgraphdemo -f "Dockerfile_pc" "/Users/zsoltbarczikay/dev/langgraphdemo-completed" \
+		--tls-verify=false --creds=barczikayzs:pwd
+		
+	./venv/bin/python -m basics.hello_world 
+
+
+
+
+
+-------
+
+CERT bajok
+	'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1028)'))
+	python3 -m certifi
+	
+Több helyen cert, egyik sem jó!
+	/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/certifi/cacert.pem /Users/zsoltbarczikay/dev/langgraphdemo-completed/venv/lib/python3.13/site-packages/certifi/cacert.pem
+	
+	Lementeni a külső oldal certjét
+	
+	MAC import
+	
+		○ Open the Keychain Access application (Applications > Utilities > Keychain Access).
+		○ Drag and drop your certificate file into the "System" keychain.
+		○ Right-click the certificate and select "Get Info".
+	MAC export
+
+		security find-certificate -a -p /Library/Keychains/System.keychain > /tmp/cacert.pem
+	Másolás python alá
+		cp /tmp/cacert.pem /Users/zsoltbarczikay/dev/langgraphdemo-completed/venv/lib/python3.13/site-packages/certifi/cacert.pem

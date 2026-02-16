@@ -1,0 +1,298 @@
+2025-06-19
+
+https://github.com/pryann/otp-python-halado
+Gáll Gergely , gergely.gall@training360.com
+https://docs.python.org/3/
+Double Commander
+VSC: Visual Studio Code
+JetBrains: fejlesztő IDE-k: PyCharm
+
+Tanulni
+	realpython.com
+	Arjan code
+Telepítés
+	Python
+	Ruff: lintern és formatter, statikus kód elemző!!!!!
+	Wolf : kiírja a sor végére, mi lesz a standard output...
+	Code Runner: 
+	Path Autocomplete, intellisense
+	Material Icon Theme: kiterjesztés szerint más a fájl ikonja
+VSC beállítások
+	F1 - beállítások
+	Format on save
+	Kijelölve blokk és Option és fel/le egyben másolja a blokkot
+	Multcursor gomb: ALT és shift lenyomva
+Függvényen : cltr és clikk, bejön az implementáció
+Alapok
+	# swappelés, csere
+		i, j = 2, 3
+		i, j = j,i
+		print(i,j)
+	Small int caching_ -5 és 256 között, hivatkozást készít, pointert
+		Print(id(a)) # kiírja a memóriaterület címét!!!!
+	yearly_salary_statistics
+		Nem camelCase az elterjedt a változókra
+	Walrus operátor (létrehozza, majd használja)
+		Print(x:=3)
+	Dictionary
+	Lista, tuple végén elfogadott a "fölös" plusz "," !!!
+		Int_tuple = (1, 2, )
+	Tuple: immutable, nem módosítható
+	Set: halmazok
+	Counter:
+		From collections import Counter
+		Inventory = Count()
+		Dictionrykat össze tud adni azonos kulcs alapján
+	Globális változó
+		Ha scope-n belül nincs, fentebb megy (nem hibaüznet).Ha van, azt használja!
+		global x # globális változót írd át! (nem szép, kifelé nem piszkálunk)
+		nonlocal x # felsőbb szintű függvényét használom. Hasonlít, de mégsem...
+	F-String: stringek kiiratása, formázása váltózóból
+	    print(f"Total time: {end-start:.2f} seconds")
+	Váltózónév helyett "_", ha nem hasnált változó (for ciklusban) !!!!!
+		For _ in range(16)
+	List comprehension
+		processes = [Process(target=process_fn) for _ in range(16)]
+	Ha fentebbi mappából akarok includálni
+		- Project root beállítása az __init__.py fájlban
+		- Program gyökeréből adjam meg a fájl nevét, amit futtatni akarok
+			python -m dir.filename.  (mint modul, elválasztó a . 
+		- Legyen egy __main__.py fájl ami a főprogram
+		- Minden könyvtárban legyen __init__.py 
+ez jelzi, hogy nem sima mappa, hanem "package"
+		
+Függvények
+	Függvény 10-15 sornál ne legyen több, egy dologért feleljen
+	Függvényben függvény
+		def outer_function(text):
+		    msg = text.upper()
+		    def inner_function():
+		        print(msg)
+		    return inner_function  # függvényt ad vissza
+	Lambda function
+		z = lambda x: x ** 2
+		print(z(2))
+	
+Függvényt változóhoz lehet rendelni, stb. Bármi megoldható, ami változókkal
+	Chaining
+		def add_double_meal(burger):
+		    burger["double_meal"] = True
+		    return burger
+		def make_burger(burger, *funcs):   # azt jelenti, hogy funcs akárhány paramétert kahpat, tuple-ba teszi le!!
+		    for func in funcs:
+		        burger = func(burger)
+		    return burger
+		custom_burger = make_burger({}, add_bacon, add_double_meal, remove_onion)
+		print(custom_burger)
+Functional programing, funkcionális programozás:
+	Nem lépésenkénti, nem procedurális
+	Minden elemre függvényt írunk, hívunk
+	Tiszta függyvény: adott bemenetre, mindig ugyanazt a kimenetet adja
+	Map:
+		.map() # kap egy függvényt, lambda expression (fn = lambda a: a+1 ) 
+		Minden elemen végrehajtani, annyi jöb be, mint ki
+		yearly_salary = [100, 120, 150, 180, 200]
+		def increase_salaries_function(salaries, incresasePerceng):
+		        return list(map( lambda salary: salary+10, salaries ))
+		print(increase_salaries_function(yearly_salary,1))
+	Filter: kiszűr a függvény szerint
+		Filter(függvénynév, adattömb)
+			num_list = [1,2,3,4,5]
+			odd_number = list(filter((lambda num: num % 2 != 0), num_list))
+			print(odd_number)
+	Reduce:
+		Ha listából egy értéket képzek (átlag, max, stb.)
+Akkumlátor elemet használ, a kezdeti elem értéke megadható, utána végigmegy a listán
+		sum_num_list = reduce(lambda x,y : x+y, num_list) # függvyént, mit csinál, min
+		
+Dekorátorok
+		Függvények paraméterátadás
+			- Sorrendi
+			- Nevesített 
+				□ count(percent=20,...)
+		Paraméter/argumentum
+			- Paraméterek: a defimíció
+			- Argumentum: amit pontosan megadunk neki
+		fuggveny(*args):   # akármennyi paraméter lehet és egy tuple típusban fogja kezelni!!!!!!!! Sorrendi 
+			Print(args, type(args)
+		fuggveny(**kwargs):   # kwargs foglalt szó!!! Dictionaryba teszi key, wordként : nevesített
+		fuggvény(*args, **kwargs).  : előbb jöjjenek a pozicíonális, utána a nevesített, bármilyen paraméterek 
+		
+		Dekorátor: paraméterként függvényt kap, amit meghív, de előtt, utána csinál valamit (outer, inner)
+			Wrapper, logolás
+				Def basic_decorator(func):
+					Def wrapper(arg..):
+						Print("akarmi")
+						Func(arg...)
+						Print("vege")
+					Return wrapper
+				Result = basic_decorator(fuggveny)
+				Result()
+			Rövidebben!!
+				Basic_decorator(fuggveny)()
+			Mégrövidebben!! (@) lefut majd a dekorátor is!!
+				@basic_decorator
+				Def sey_hello():
+					...
+				Say_hello()
+	
+Pass by object reference
+	Immutability: módosíthatatlan: int, string, tuple
+		Új érték adásnál, ú memóriaterületre másolódik
+	Nem a változónak, hanem az értéknek van típusa!
+	Memóriahely id(variable)
+	Mutable: változtatható pl dictionary
+		Így ha két változó ugyanoda mutat, és egyiket bővítem appenddel, akkor a másik is fog!!!
+		Ha "=" adok értéket, akkor új memóriahelyet kap
+	Shallow and deep copy!
+		copy.copy()
+		
+Párhuzamos szálak, asszinkron programozás
+	if __name__ == "__main__":
+		Ha importáljuk a fenti modult, ne fusson le!!!! Csak ha mainben van
+	Thread osztály
+	GIL : global interpreter lock
+		Mindig valójában csak egy szál fut. A CPU időosztásával dolgozik. Várakozási időben futhat valami.
+		CPU intenzív feladatoknál nem lesz jó. Arra való a Multiprocesszing
+		I/O műveleteknél jó!!!
+	Daemon thred
+		Daemon=True
+		Ha beállítva  akkor is továbbfuthat, amikor a főszál leáll....
+		Endless (while true) dolgoknál fontos ez! Vagy join kell, az bevár!
+	TreadPoolExecutor
+		Megadhatjuk max mennyi worker lehet
+	With lock:
+		Változók lockolása
+	Multiprocesszing
+		Valódi párhuzamos programozás
+		import multiprocessing
+		CPU igényes feladatoknál jó
+		Van call-back
+	Queue kezelés
+		From queue import Queue
+	Assznnkron programozás
+		Async
+		Egy szál van csak, folyamatosan fut a figyelő, ha beesnek taskok, azokat aszinkron végrehajtja.
+		HTTP kérésekre jó tipikusan!!!!
+		Pip install aiohttp
+		
+Generátorok, iterátorok
+	Generator:
+		Függvényen belül megáll, visszaad értékeket, de ettől még a függvény fut tovább, nem a return! Annyi next hívás, ahány yield! Generátor objektumot ad vissza!
+		ID generátornak nagyon jó. Nagy fájlok beolvasásához, nem tartja az egészet a memóriába!!!!!!!!
+
+			Def num_generator():
+				yield 1
+				Yield 2
+				...
+			Nums = num_generator()
+			Print(next(nums))
+			Print(*nums).  # csillag után a pointer elmászik még egy ilyen sor üreset ad vissza
+
+Objektum orintentált programozás
+	Python objektum alapú, minden class, viszont minden publikus
+	Type() megadja a típusát
+	Def __init__ konstruktor függvény
+		class Student:
+		    def __init__(self, first_name, last_name):   #selft mindig oda kell írni
+		        self.first_name = first_name
+		        self.last_name = last_name
+		
+		student = Student("John","Doe")
+		print(student.first_name)
+		print(type(student))
+		Print(getattr(student, "first_name"))  # igy is el lehet érni egy változót
+		
+	Bővíthető a class (kívülről)
+		student.age = 20. 
+		Kiv, ha a class elején ez, akkor levédi
+			__slots__ = ("first_name", "last_name")
+	Pass: majd kifejteml... addig is működőképes
+		    def avarage(self):
+		        pass
+	Ha a változó "__valtozonev" akkor ez privát! Csak classon belül. Csak elrejti, valójában elérhető...
+		__neptun_code
+		student._Student__neptun_code
+		Irni kell getterts, settert szokványosan
+		Vagy dekorátorral
+		@property dekorátor az ugyanolyan nevü, mint a függvény
+		__salary
+		@property
+		def salary
+		@salary.setter
+		def salarty.setter
+		Van delete is!
+	Örkölődés
+		super() meghívja a szülő konstruktorát
+		class Subcategory(Categroy):
+	Operátor felüldefiniálás
+		def __str__(self)
+		def __eq__(self)
+		def __bool__(self)
+	DataClass
+		Jó pár alapdolog automatikus (operátor felüldefiniálás, rendezés, inicializálás...)
+		# adatokon alapul, azon végez műveleteket
+		from dataclasses import dataclass, field
+		@dataclass
+		class Person:
+			first_name: str
+		def __post_init__(self):
+			#adatvizsgálat, inpu validálás
+Typing
+		Megadni a típusosságot!
+		Visszatérési értékénél, ez csak a dokumentáció. Python nem veszi figyelembe...
+		A """ is dokumentációt csinál belőle. Annotáció
+		
+		from typing import List, Tuple, Dict
+		def summa(a:int, b:int) -> int:
+		    """Return the summa"""
+		def summa_list(numbers: List[int]) -> int:
+		    """Return the summa"""
+		    return sum(numbers)
+		print(summa_list([1,2,3,4,5]))
+Flask / FastAPI webserver
+	Fastapi
+		csinál hozzá Swagger doksit automatán!
+		#ezzel indítok (dev) elindítja a dev-webservert
+		fastapi dev main.py   
+		
+		from fastapi import FastAPI
+		app = FastAPI()
+		@app.get("/")
+		def index():
+		    return {"message":"Banana"}
+
+Unit teszt írás
+	Külön mappa/file: tests/test_unit.py
+	import unittest
+	from utils_fns import summarize, subtract, divide # ezaa saját fájlaim
+	
+	class TestUtilsFns(unittest, TestCase):
+		def test_summarize(self):
+			self.assertEqual(summarizse(2,3),5)
+	if __name__="__main__"
+		unittest.main()
+		
+Py QT, Kivy
+	Desktop alkalmazások fejelsztéséhez
+		pip install pyQT5
+	UI, widgetekkel, stb.
+	Kivy: telókra is!
+
+Azure.functions
+	Cron, timing, eseményvezérelt cuccok, notification értesítés. Call_back hívásokon keresztül
+	pip install azure.functions
+	Json leírókkal lehet használni
+	Timer:
+	
+Numpy, Pandas, Adatkezelés
+	Pandas Numpyra épül, mindent tud, csak többet
+	Tutorial: Python Pandas Tutorial (Part 1): Getting Started with Data Analysis - Installation and Loading Data
+	Struktúrákat olvas be fájlból, kezel
+	DataFramek vannak
+	pip install pandas
+	import pandas as pd
+	df = pd.read_csv('').   // ez a dataframework
+	df.column, df.types, df.info(), df.describe()....stb....  // kapásból elemzések, hasznos infók, stb..
+	Szűrések, vágások, rendezések, stb, stb.
+	Mintha csak egy excelben lennék...
